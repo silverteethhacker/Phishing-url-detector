@@ -1,6 +1,8 @@
 # 🔐 Phishing URL Detector
 
-A Machine Learning-based web application that analyzes URLs and predicts whether a URL is potentially **phishing** or **legitimate**.
+A Machine Learning Based phishing URL Detection
+
+A cybersecurity project that uses Machine Learning and URL-based features to classify URLs as potentially **Phishing** or **legitimate**
 
 ## 📌 Project Overview
 
@@ -128,7 +130,7 @@ Through this project, the following concepts were practiced:
 
 ## 👨‍💻 Author
 
-**Shahedil Khan**
+**silverteethhacker**
 
 MCA Student
 Cybersecurity / Machine Learning Project
@@ -143,4 +145,4 @@ Cybersecurity / Machine Learning Project
 * Improve the web interface
 * Add automated testing
 * Deploy the application
-*
+
