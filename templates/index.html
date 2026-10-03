@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Phishing URL Detector</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            box-sizing: border-box;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        .url {
+            word-break: break-all;
+        }
+
+        .details {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .details p {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .reasons {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .reasons li {
+            padding: 8px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>🔎 Phishing URL Detector</h1>
+
+    <p class="description">
+        Analyze URL characteristics using Machine Learning.
+    </p>
+
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="url"
+            placeholder="https://example.com"
+            value="{{ url }}"
+            required
+        >
+
+        <button type="submit">
+            Scan URL
+        </button>
+
+    </form>
+
+
+    {% if result %}
+
+    <div class="result">
+
+        <h2>{{ result }}</h2>
+
+        <p class="url">
+            <strong>URL:</strong>
+            {{ url }}
+        </p>
+
+        <p>
+            <strong>Model phishing probability:</strong>
+            {{ "%.2f"|format(probability) }}%
+        </p>
+
+
+        {% if details %}
+
+        <div class="details">
+
+            <h3>🔍 URL Analysis</h3>
+
+            <p>
+                <strong>HTTPS:</strong>
+                {{ details["HTTPS"] }}
+            </p>
+
+            <p>
+                <strong>IP Address:</strong>
+                {{ details["IP Address"] }}
+            </p>
+
+            <p>
+                <strong>Suspicious Keywords:</strong>
+                {{ details["Suspicious Keywords"] }}
+            </p>
+
+            <p>
+                <strong>URL Length:</strong>
+                {{ details["URL Length"] }}
+            </p>
+
+            <p>
+                <strong>Subdomains:</strong>
+                {{ details["Subdomains"] }}
+            </p>
+
+        </div>
+
+        {% endif %}
+
+
+        {% if reasons %}
+
+        <div class="reasons">
+
+            <h3>🧠 Detection Reasons</h3>
+
+            <ul>
+
+                {% for reason in reasons %}
+
+                <li>{{ reason }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+</body>
+
+</html>
